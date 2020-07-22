@@ -17,3 +17,22 @@ window.addEventListener('load', function(){
     }
   }, 1000);
 })
+
+const github = document.querySelector('#github');
+
+  const response = fetch('http://api.github.com/users/dantls').then(response =>{
+    response.json().then(user => {
+      
+        showData(user)
+      
+    });
+  }).catch(error => {
+    console.log('Error')
+  });
+
+
+
+function showData(data){
+  github.textContent = data.name + ' ' + data.url
+
+}
